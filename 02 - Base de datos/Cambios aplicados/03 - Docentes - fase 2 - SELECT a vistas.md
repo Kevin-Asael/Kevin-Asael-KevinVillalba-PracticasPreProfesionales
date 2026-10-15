@@ -9,7 +9,7 @@
 
 ## Qué se pidió y qué salió
 
-El ingeniero pidió dejar los SELECT (los GET) de docentes como vistas de Oracle. De las 156 consultas de lectura del microservicio, **28 pasaron a leer de una vista**: 22 vistas nuevas y 3 que ya existían. El resto no se migró a propósito; la sección «Lo que no se migró» dice por qué.
+La migración planteaba dejar los SELECT (los GET) de docentes como vistas de Oracle. De las 156 consultas de lectura del microservicio, **28 pasaron a leer de una vista**: 22 vistas nuevas y 3 que ya existían. El resto no se migró a propósito; la sección «Lo que no se migró» dice por qué.
 
 | Módulo | Consultas | Vistas nuevas |
 |---|---|---|
@@ -1671,8 +1671,8 @@ Por cada consulta se corrió en Toad, con los mismos valores de prueba, `origina
 
 | Grupo | Cuántas | Motivo | Qué corresponde |
 |---|---|---|---|
-| Proyectos y producción científica | 49 | las vistas ya existen y el código está en `beta` | decidir con el ingeniero si se recupera lo de `beta` |
-| Parámetro dentro de la consulta | 47 | una vista no recibe parámetros | dejarlas, o pasarlas a funciones con cursor si el ingeniero lo pide |
+| Proyectos y producción científica | 49 | las vistas ya existen y el código está en `beta` | decidir con el equipo responsable si se recupera lo de `beta` |
+| Parámetro dentro de la consulta | 47 | una vista no recibe parámetros | dejarlas, o pasarlas a funciones con cursor si se solicita ese cambio |
 | Sin uso | 22 | ningún controlador llega a ellas | borrarlas del código |
 | Solo llaman una función sobre `DUAL` | 9 | no leen tablas | nada |
 | Ya leen una `LMS_VIEW_*` de `UTNDB` | 2 | ya leen una vista | nada |
@@ -1683,5 +1683,5 @@ La lista con el nombre de cada consulta está en `db/cambios/005_migracion_selec
 ## Pendiente
 
 - [ ] Crear las 22 vistas en producción antes de que este código llegue a `main`.
-- [ ] Preguntar al ingeniero por lo de `beta` y por las 47 consultas con el parámetro dentro.
+- [ ] Preguntar al equipo responsable por lo de `beta` y por las 47 consultas con el parámetro dentro.
 - [ ] Borrar del código las 22 consultas sin uso.

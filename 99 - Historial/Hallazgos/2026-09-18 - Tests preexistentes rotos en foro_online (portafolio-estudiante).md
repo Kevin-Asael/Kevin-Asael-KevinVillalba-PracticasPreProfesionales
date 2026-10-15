@@ -3,7 +3,7 @@
 ## Qué se encontró
 
 Al correr la suite completa (`pnpm test`, no solo la de `evaluacion_online`) en
-`practicas-preprofesionales` tras el merge de anti-copia (ver nota del mismo día sobre ese merge),
+`practicas-preprofesionales` tras el integración de correcciones de evaluaciones (ver nota del mismo día sobre ese merge),
 aparecen **7 suites / 20 tests fallando**, todos dentro de
 `src/modules/foro_online/tests/foro_online.service.spec.ts`:
 
@@ -11,7 +11,7 @@ aparecen **7 suites / 20 tests fallando**, todos dentro de
 - `TS2339`: se accede a `result.autores['A123456789'].foto`, propiedad que ya no existe en
   `AutorForoDto`.
 
-## Por qué no es del merge de anti-copia
+## Por qué no es del integración de correcciones de evaluaciones
 
 `git diff --stat 18138f6 bcacc09 -- src/modules/foro_online` no devuelve nada — el merge no tocó
 ni un archivo de `foro_online`. Los tests ya estaban rotos en el commit previo al merge
@@ -25,7 +25,7 @@ Sin verificar contra el código todavía — queda pendiente investigar la causa
 
 ## Estado
 
-**Pendiente de investigar.** No bloquea el trabajo de anti-copia/evaluación, pero la suite
+**Pendiente de investigar.** No bloquea el trabajo del módulo de evaluación, pero la suite
 completa de `practicas-preprofesionales` no está en verde por esta razón, aparte del bug de Oracle
 documentado en la otra nota de hoy.
 

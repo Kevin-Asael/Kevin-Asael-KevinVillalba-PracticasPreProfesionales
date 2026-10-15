@@ -2,7 +2,7 @@
 
 - **Fecha:** 2026-10-13
 - **Repo:** `utn-movil-portafolio-docentes`
-- **Estado:** hallazgo verificado; **pendiente de decisión del ingeniero**. No se tocó nada de esos dos módulos.
+- **Estado:** hallazgo verificado; **pendiente de decisión del equipo responsable**. No se tocó nada de esos dos módulos.
 - Relacionada: [[2026-10-13 - Migracion de SELECT a vistas en docentes (fase 2)]]
 
 ## Qué se encontró
@@ -18,7 +18,7 @@ Por eso, al preparar la fase 2 se estuvo a punto de crear 33 vistas nuevas que d
 - Producción científica: `MVL_VIEW_ARTICULOS`, `MVL_VIEW_LIBROS`, `MVL_VIEW_CAPITULOS_LIBRO`, `MVL_VIEW_PONENCIAS`, `MVL_VIEW_OBRAS_ARTISTICAS`, `MVL_VIEW_DETALLE_ARTICULO`, `MVL_VIEW_DETALLE_LIBRO`, `MVL_VIEW_DETALLE_CAP_LIBRO`, `MVL_VIEW_DETALLE_PONENCIA`, `MVL_VIEW_DETALLE_OBRA_ARTISTICA`, `MVL_VIEW_AUTORES_OBRA`, `MVL_VIEW_BD_INDEXADAS`, `MVL_VIEW_CONTEO_BD_INDEXADA`, `MVL_VIEW_CONTEO_TIPOS_OBRA`.
 - Proyectos: `MVL_VIEW_PROYECTOS_INVESTIGACION`, `MVL_VIEW_CONVOCATORIAS`, `MVL_VIEW_DATOS_PROYECTO`, `MVL_VIEW_AREAS_INVESTIGACION_PROYECTO`, `MVL_VIEW_BENEFICIARIOS_PROYECTO`, `MVL_VIEW_EJES_INTEGRADORES_PROYECTO`, `MVL_VIEW_EQUIPO_TRABAJO_PROYECTO`, `MVL_VIEW_ESTRATEGIAS_PRODUCCION_PROYECTO`, `MVL_VIEW_ESTRATEGIAS_RESULTADOS_PROYECTO`, `MVL_VIEW_INFRAESTRUCTURA_PROYECTO`, `MVL_VIEW_INSTITUCIONES_ASOC_PROYECTO`, `MVL_VIEW_LINEA_INVESTIGACION_PROYECTO`, `MVL_VIEW_SECTORES_IMPACTO_PROYECTO`, `MVL_VIEW_DOCUMENTOS_RESPALDO_PROYECTO`, `MVL_VIEW_DOC_PRESUPUESTO_PROYECTO`, `MVL_VIEW_DOC_PROYECTO_PROYECTO`, `MVL_VIEW_DOC_RESOLUCION_PROYECTO`.
 
-**El código que las usa está en la rama `beta`** (autor: Diego Recalde):
+**El código que las usa está en la rama `beta`** (según el historial de Git):
 
 | Commit | Fecha | Mensaje |
 |---|---|---|
@@ -32,8 +32,8 @@ Por eso, al preparar la fase 2 se estuvo a punto de crear 33 vistas nuevas que d
 
 | Merge | Fecha | Autor | Mensaje |
 |---|---|---|---|
-| `58ff533` | 2026-03-12 | un compañero del equipo | Merge branch 'main' of …/utn-movil-portafolio-docentes |
-| `67c35c7` | 2026-03-14 | Diego Recalde | Merge branch 'beta' |
+| `58ff533` | 2026-03-12 | Equipo de desarrollo | Merge branch 'main' of …/utn-movil-portafolio-docentes |
+| `67c35c7` | 2026-03-14 | Equipo de desarrollo | Merge branch 'beta' |
 
 Comando para repetir la comprobación en cada merge:
 
@@ -46,7 +46,7 @@ git grep -l 'MVL_VIEW_ARTICULOS' <merge>^2 -- src    # 1 archivo
 
 ## Lo que no se sabe
 
-Si los merges se quedaron con la versión vieja **por accidente** al resolver conflictos, o **a propósito** como marcha atrás. Solo lo pueden decir el ingeniero o Diego. ⚠ Sin verificar.
+Si los merges se quedaron con la versión vieja **por accidente** al resolver conflictos, o **a propósito** como marcha atrás. Solo lo puede confirmar el equipo responsable. ⚠ Sin verificar.
 
 ## Por qué importa
 
@@ -56,7 +56,7 @@ Si los merges se quedaron con la versión vieja **por accidente** al resolver co
 
 ## Qué corresponde
 
-1. Preguntar al ingeniero si lo de `beta` se descartó a propósito.
+1. Preguntar al equipo responsable si lo de `beta` se descartó a propósito.
 2. Si no: recuperar esos dos módulos desde `beta` en vez de reescribir las consultas, y validar con MINUS la consulta actual contra cada vista existente.
 3. Si sí: decidir si las 31 vistas se actualizan y se usan, o se eliminan.
 

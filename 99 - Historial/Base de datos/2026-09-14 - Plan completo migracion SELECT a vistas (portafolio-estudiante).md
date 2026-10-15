@@ -475,7 +475,7 @@ más específico: solicitud de beca activa, evaluación en curso).
   alguien quiere limpiarlas en otro momento, pero no se les crea ningún objeto de BD.
 - Las **45 sentencias W** (escrituras) — fase de procedimientos, posterior y separada.
 - **`evaluacion_docentes`** completo — módulo deshabilitado, no se prioriza mientras siga así.
-  hallazgo de seguridad §6.1 con el usuario/tutor.
+  hallazgo de seguridad §6.1 con el equipo responsable.
 - Corregir el desfase de `SYSDATE` (§6.6), el bug de `horario_estudiante` (§6.4 — este si se corrige,
   pero *al migrar esa vista específica*, no antes ni aparte), ni ningún otro bug de negocio que se
   note de paso: se documentan, no se arreglan salvo que el usuario lo pida.

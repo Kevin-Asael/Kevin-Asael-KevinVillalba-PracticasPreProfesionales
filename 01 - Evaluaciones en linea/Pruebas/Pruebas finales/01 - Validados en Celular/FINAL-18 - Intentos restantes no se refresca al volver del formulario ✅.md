@@ -45,7 +45,7 @@ nota con el estado real.
 `BotonesEvaluacionWidget` — tiene su propia copia duplicada de `_confirmarEIniciarEvaluacion`
 (`detalles_actividad_page.dart:257-308`) con el mismo `context.push` sin refresco. El primer fix
 solo tocó `botones_evaluacion_widget.dart` y dejó este segundo punto de entrada sin arreglar, por
-lo que el usuario reportó que "no me sirvió el fix" al probarlo en el teléfono. Se aplicó el mismo
+por lo que la corrección inicial no se reflejaba al probarla en el dispositivo. Se aplicó el mismo
 patrón (`read` antes del `push`, `await`, `init()` al volver) en ambos archivos. Confirmado por
 grep que `BotonesEvaluacionWidget` sí se usa en otro lado
 (`seccion_formulario_entregar_actividad_widget.dart`) — no es código muerto, son dos entradas
@@ -56,7 +56,7 @@ reales al mismo flujo que había que arreglar por separado.
 1. Actividad con intentos limitados donde puedas agotar el último (p. ej. vía
    [[FINAL-14 - Intento zombi con y sin intentos de sobra ✅]]).
 2. Desde el detalle de la actividad, tocar "Iniciar Evaluación", dejar que se consuma el último
-   intento dentro del formulario (zombi, anti-copia, o entrega normal), y volver a la pantalla de
+   intento dentro del formulario (zombi, control de evaluación, o entrega normal), y volver a la pantalla de
    detalle.
 3. **Esperado (con el fix):** "Intentos restantes" ya debe mostrar el número real (0), no el
    valor de antes de entrar.
@@ -67,7 +67,7 @@ reales al mismo flujo que había que arreglar por separado.
 
 ## Observación — qué pasó de verdad
 
-> Validado en Samsung Galaxy S24 FE: Se verificó el decremento inmediato al regresar a la tarjeta de actividad tras cada flujo (3 a 2 tras expulsión anti-copia, 2 a 1 tras finalización por doble tap, y 1 a 0 tras finalizar el último intento). En todos los casos el texto "Intentos restantes" se actualizó inmediatamente sin necesidad de swipe down ni recarga manual. Al llegar a 0, el botón "Evaluación" fue reemplazado por el botón "Cerrar" de ancho completo.
+> Validado en un dispositivo Android de prueba: el contador se actualizó al regresar al detalle tras distintos flujos de cierre, sin recarga manual. Al agotarse los intentos, la pantalla mostró la acción de cierre correspondiente.
 
 ## Estado
 

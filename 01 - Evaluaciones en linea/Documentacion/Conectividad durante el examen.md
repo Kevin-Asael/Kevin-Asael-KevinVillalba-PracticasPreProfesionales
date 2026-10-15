@@ -12,7 +12,7 @@ Módulo `evaluacion_online` · app `utn_movil_app` · backend `utn-movil-portafo
 
 - **Opción múltiple** (`26db164`): marcar la misma alternativa dos veces deja una sola fila activa. Comprobado con dos envíos iguales: 204 y 204, y 1 fila en Oracle. Detalle en [[2026-09-07 - Fix aplicado - Idempotencia en respuestas de opcion multiple (estudiante)]].
 - **`/finalizar`** (`f251262`): sobre un intento ya entregado responde 204 sin volver a calificar.
-- **Una sola calificación por intento** cuando coinciden el job, `/finalizar` y el anti-copia: [[2026-10-14 - Consumo doble de intentos entre el job y finalizar (estudiante)]].
+- **Una sola calificación por intento** cuando coinciden el job, `/finalizar` y el control de evaluación: [[2026-10-14 - Consumo doble de intentos entre el job y finalizar (estudiante)]].
 
 ## Comprobado en el emulador (2026-10-13 y 14)
 
@@ -24,5 +24,5 @@ Módulo `evaluacion_online` · app `utn_movil_app` · backend `utn-movil-portafo
 
 ## Mejoras posibles
 
-- Al volver de más de un minuto fuera de la app con el tiempo vencido, la entrega del cronómetro no siempre llega en el primer intento (el estudiante ve «No se pudo finalizar automáticamente» y la entrega la hace el anti-copia o el job). Conviene reintentarla sola una vez antes de mostrar el error.
+- Tras una interrupción, la finalización automática puede mostrar un error antes de que otra vía complete la entrega. Queda pendiente evaluar un reintento controlado y mejorar el mensaje.
 - Un resumen cerca del cronómetro con cuántas respuestas siguen sin guardar.

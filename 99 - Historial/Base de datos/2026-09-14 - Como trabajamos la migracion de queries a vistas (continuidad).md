@@ -353,7 +353,7 @@ uno con más cuidado.
 6. Fase de procedimientos para las 45 escrituras, en todos los módulos — aparte, después de terminar
    los `SELECT`.
 7. No hacer ningun push.
-   crear los objetos antes de que el tutor corte el tag `v*`.
+   crear los objetos antes de que se publique el tag `v*`.
 
 ## Tanda 3 ✅ (2026-09-15, sigue la noche): `documentos` completo
 
@@ -429,12 +429,12 @@ Como se hace ahora:
 3. `notas_estudiante` (~4) aparte, uno a la vez: tiene `NOTAS_POR_CICLO_CONSULTA` (455 lineas, la
    mas compleja del repo) y `NOTAS_POR_NIVEL_CONSULTA` (308 lineas).
 4. `aula_virtual` (~9) y `becas` (~11) son los modulos grandes que quedan, al final.
-   migrar sin resolver eso con el usuario/tutor primero.
+   migrar sin resolver eso con el equipo responsable primero.
 6. `evaluacion_docentes` sigue despriorizado (modulo deshabilitado).
 7. Fase de procedimientos (45 escrituras) en todos los modulos, aparte, despues de terminar los
    `SELECT`.
 8. No hacer ningun push. Antes de eso: crear rama propia. Para produccion, el DBA crea los objetos
-   antes de que el tutor corte el tag `v*`.
+   antes de que se publique el tag `v*`.
 
 Ritual vigente: V1 y V2/F chicos se agrupan en tandas de 2-4 objetos; los grandes/complejos van uno
 a la vez. Ver "Segundo ajuste al ritual" arriba para el detalle completo del metodo actual.
@@ -485,12 +485,12 @@ Si vuelve a pasar, revisar si es reproducible.
 3. `notas_estudiante` (~4) aparte, uno a la vez: `NOTAS_POR_CICLO_CONSULTA` (455 líneas, la más
    compleja del repo) y `NOTAS_POR_NIVEL_CONSULTA` (308 líneas).
 4. `aula_virtual` (~9) y `becas` (~11) son los módulos grandes que quedan, al final.
-   migrar sin resolver eso con el usuario/tutor primero.
+   migrar sin resolver eso con el equipo responsable primero.
 6. `evaluacion_docentes` sigue despriorizado (módulo deshabilitado).
 7. Fase de procedimientos (45 escrituras) en todos los módulos, aparte, después de terminar los
    `SELECT`.
 8. No hacer ningún push. Antes de eso: crear rama propia. Para producción, el DBA crea los objetos
-   antes de que el tutor corte el tag `v*`.
+   antes de que se publique el tag `v*`.
 
 Ritual vigente: V1 y V2/F chicos se agrupan en tandas de 2-4 objetos; los grandes/complejos
 (150+ líneas, UNION/CONNECT BY anidado) van uno a la vez. Ver "Segundo ajuste al ritual" (más
@@ -744,12 +744,12 @@ FROM (
    compleja del repo, candidata a F en vez de V2) y `NOTAS_POR_NIVEL_CONSULTA` (308 líneas); las otras
    2 (`arbol_de_materias`, `carrera_estudiante`) ya están catalogadas como F por `CONNECT BY` anidado.
 3. `aula_virtual` (~9) y `becas` (~11) son los módulos grandes que quedan, al final.
-   migrar sin resolver eso con el usuario/tutor primero.
+   migrar sin resolver eso con el equipo responsable primero.
 5. `evaluacion_docentes` sigue despriorizado (módulo deshabilitado).
 6. Fase de procedimientos (45 escrituras) en todos los módulos, aparte, después de terminar los
    `SELECT`.
 7. No hacer ningún push. Antes de eso: crear rama propia. Para producción, el DBA crea los objetos
-   antes de que el tutor corte el tag `v*`.
+   antes de que se publique el tag `v*`.
 
 Ritual vigente (2026-09-22): DDL lo crea el usuario en Toad; la validación `MINUS` la corre Claude
 directo por el MCP de lectura Oracle en cuanto el usuario avisa que el objeto está creado — ya no
@@ -921,7 +921,7 @@ correccion: los 5 objetos de `notas_estudiante` son `MVL_FUN_ARBOL_MATERIAS`,
 ## Que sigue (actualizado, 2026-09-23 -- vigente, reemplaza al anterior)
 
 1. Solo quedan los modulos grandes: `aula_virtual` (~9) y `becas` (~11).
-   migrar sin resolver eso con el usuario/tutor primero.
+   migrar sin resolver eso con el equipo responsable primero.
 3. `evaluacion_docentes` sigue despriorizado (modulo deshabilitado).
 4. Fase de procedimientos (45 escrituras), aparte, al final de todos los SELECT.
 5. No hacer push. Antes: crear rama propia. Produccion: DBA crea objetos antes del tag `v*`.
@@ -975,9 +975,7 @@ reemplazaron esos 3 puntos por `DECODE(p_codigo_parcial, ...)`.
 
 **Metodo de validacion para F con muchas filas:** en vez de dumpear el resultado completo (como se
 hizo con `MVL_VIEW_NOTAS_POR_NIVEL`), que para este caso son 100+ filas y el primer intento de
-comparar agregados (COUNT/SUM) fallo por un error de TRANSCRIPCION PROPIA (copie a mano el JSON de
-un resultado grande a un archivo y se me perdieron filas al tipearlo, no era un bug real -- el
-mismatch 51 vs 106 NO era de la funcion). Leccion: **no volver a transcribir a mano un resultado
+comparar agregados (COUNT/SUM) falló por un error de transcripción del resultado JSON: se omitieron filas al copiarlo a un archivo. La diferencia 51 frente a 106 no correspondía a un fallo de la función. Leccion: **no volver a transcribir a mano un resultado
 grande para comparar** -- en su lugar, comparar puntualmente 1-2 filas conocidas por
 `ID_ACTIVIDAD` especifico entre la funcion y el original con literales, apoyado en la garantia
 estructural de que el script solo renombro binds y sustituyo 3 expresiones puntuales en el SELECT
@@ -1112,7 +1110,7 @@ en un solo objeto con `DECODE` por `codigoParcial`), `MVL_VIEW_DISTRIBUCION_MATE
 
 Pendiente ahora: `CONTENIDO_MATERIA_CONSULTA` (F, en curso, ver arriba).
 
-Bloqueada, no tocar sin resolver antes con el usuario/tutor: `SILABO_CONSULTA` -- filtra
+Bloqueada, no tocar sin resolver antes con el equipo responsable: `SILABO_CONSULTA` -- filtra
 `Backup-Planes/2026-09-14 - Plan completo migracion SELECT a vistas (portafolio-estudiante).md`).
 
 Revertida, bug latente sin urgencia (no tocar hasta que se entienda el misterio de las filas

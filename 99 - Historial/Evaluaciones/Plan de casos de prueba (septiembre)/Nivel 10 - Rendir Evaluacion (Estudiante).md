@@ -4,7 +4,7 @@ Pruebas del flujo del estudiante rindiendo un examen configurado por el docente:
 formulario, responder cada tipo de pregunta y finalizar. Contraparte de los Niveles 3-6 (esos son
 la gestion del lado docente; este es la experiencia del estudiante que rinde). Repos:
 `utn-movil-portafolio-estudiante` (rama `practicas-preprofesionales`) +
-`utn_movil_app/lib/apps/portafolio_estudiante/evaluacion_online` (rama `PortafoliosFase2-practicante`).
+`utn_movil_app/lib/apps/portafolio_estudiante/evaluacion_online`.
 
 Hub: [[Tests]]
 

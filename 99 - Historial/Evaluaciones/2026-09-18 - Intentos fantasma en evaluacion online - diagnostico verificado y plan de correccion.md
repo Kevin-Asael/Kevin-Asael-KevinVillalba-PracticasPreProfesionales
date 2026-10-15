@@ -55,7 +55,7 @@ Ni `MOVIL_UTN.MVL_PRC_EVAL_INICIAR_CRONOMETRO` ni `MOVIL_UTN.MVL_PRC_EVAL_REANUD
 - la nota `testsFinal/.../FINAL-14 - Intento zombi con y sin intentos de sobra ✅.md` de este vault.
 
 ✅ De paso: `MVL_PRC_EVAL_REANUDAR_INTENTO` **sí** limpia `FECHA_INICIO_EA`, así que el bug anotado en
-`2026-09-18 - Merge anti-copia... bug FECHA_INICIO_EA...md` ya está aplicado en Oracle.
+[[2026-09-18 - Integracion de correcciones y bug FECHA_INICIO_EA en MVL_PRC_EVAL_REANUDAR_INTENTO]] ya está aplicado en Oracle.
 
 ## 4. Las tres rutas que consumen un intento
 
@@ -74,7 +74,7 @@ Ni `MOVIL_UTN.MVL_PRC_EVAL_INICIAR_CRONOMETRO` ni `MOVIL_UTN.MVL_PRC_EVAL_REANUD
 > descontado**.
 
 ⚠ Ese mensaje de log **miente**: dice siempre "el estudiante envió la evaluación manualmente" aunque
-lo haya disparado el auto-cierre de zombi o el anti-copia. Fue lo que más costó en el diagnóstico.
+lo haya disparado el auto-cierre de zombi o el control de evaluación.
 
 ### Validación aritmética (4 de 4 exactas)
 
@@ -147,10 +147,6 @@ reentrara y antes de que el job corriera (programado `17:42:45`). Una sola final
 todo correcto. Es tiempismo, no otra cosa.
 
 ## 6. Estado del cliente Flutter (ya verificado, no hace falta rehacerlo)
-
-⚠ **Ojo con la rama.** El workspace estuvo en `feature/docente-encadenar-crear-preguntas-practicante`,
-que tiene una versión **vieja** de este módulo. El código que corre en el teléfono es el de
-**`feature/anticopia-evaluacion-online`**.
 
 En esa rama:
 - El **bucle de reintentos de ~1 s ya está corregido** (commit `369074f6c`). Al fallar el
@@ -227,11 +223,11 @@ Conclusión: el cliente no es la causa. La causa está en el backend.
   Oracle; el MCP es solo `SELECT`/`WITH`.
 - El encargo general del repo es **hacer funcionar lo que existe y documentarlo**, no refactorizar.
 
-## 10. Relación con otras notas de este vault
+## 10. Relación con otras notas
 
 - `FINAL-14 - Intento zombi con y sin intentos de sobra ✅.md` — **corregir**: afirma que el intento
   se consume al iniciar; es falso (§3).
-- `2026-09-18 - Merge anti-copia a practicas-preprofesionales y bug FECHA_INICIO_EA...md` — ese bug
+- [[2026-09-18 - Integracion de correcciones y bug FECHA_INICIO_EA en MVL_PRC_EVAL_REANUDAR_INTENTO]] — ese bug
   **ya está aplicado** en Oracle; verificado en `ALL_SOURCE`.
 - `2026-09-07 - Conectividad en Evaluacion Online.md` — la cola offline descrita ahí está
   **descartada permanentemente**; no reintroducirla.

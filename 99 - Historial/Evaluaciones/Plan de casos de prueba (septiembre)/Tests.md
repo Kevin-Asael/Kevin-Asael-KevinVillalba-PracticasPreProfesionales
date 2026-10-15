@@ -62,11 +62,11 @@ de una alternativa, no solo el límite de caracteres.
 
 El refresh del registro academico no esta 
 
-Al poner varias respuestas y no tener limitado el maximo de chars en alternativa de respuesta me da un error 500 en la bdd. Poner un tope
+Revisar la validación del tamaño de las alternativas y el tratamiento del error de servidor.
 
 Se esta demorando mucho en ingresar a revisar la nota desde docente
 
-Finaliza cuando se esta mucho tiempo enfocando una aplicacion externa
+Revisar la continuidad y el estado de finalización de la evaluación.
 
 En la evaluacion online si funciona lo de cerrar 
 
@@ -77,21 +77,3 @@ No se pudo guardar la pregunta tal
 Preguntas en offline tendria que compararse con las que estan en el buffer porq 
 
 UI DE RESPUESTAS SIN ENVIAR dice que si finalizas se perderan. Deberia decir otra.
-
-
-
-Archivo: Livecycle
-
-Tiempo de vuelta 5 s
-Notificaciones 5 s 
-Numero de intentos ui
-
-Revisar si los intentos de copia esta en la base o a nivel de app.
-
-
-
-
-Ademas respondeme esta pregunta. Si desinstalan la app y le instalan anticopia no hace nada no? Y de paso dame un prompt para que se cree una rama nueva en app con mis cambios buenos
-  pero los commits que sean bien ordenados con las cosas que son. Que se entienda bien los commits sin tenerte a ti de coauthor. Que se commitee bien las cosas ej. No poner tipo algo que
-  es de otro lado como commit mio etc. Solo commits mios pero que esten al dia en todo caso seria de ver la rama de __ y a partir de traer los cambios de esa meter los mios que ya
-  funcionan.

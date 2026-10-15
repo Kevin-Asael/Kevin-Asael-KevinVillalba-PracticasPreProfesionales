@@ -50,8 +50,7 @@ Archivos modificados:
    evaluación, visible mientras no hay red, desaparece sola al reconectar.
 4. Resultado: el estudiante ya no queda bloqueado por el overlay global durante un examen
    si pierde señal momentáneamente. Ve un aviso, lo cierra, y sigue respondiendo con el
-   cronómetro corriendo — el aviso deja explícito que "no cambie de red ni salga de la app"
-   porque eso cuenta como actividad sospechosa para el anti-copia.
+   cronómetro corriendo, conservando los controles existentes de la evaluación.
 
 ---
 
@@ -111,7 +110,7 @@ perder igual. Este cambio solo mejora la experiencia del aviso, no la persistenc
      llegaron a guardarse en Oracle o no. Si nunca llegaron, en ese momento se pierden para
      siempre. Hay aviso previo, así que no es una pérdida silenciosa, pero sí es irreversible
      una vez confirmado.
-  4. Si el cierre es **automático** (tiempo agotado o anti-copia, rama `esAutoFinalizar=true`,
+  4. Si el cierre es **automático** (tiempo agotado o control de evaluación, rama `esAutoFinalizar=true`,
      líneas 266-270) **no hay ningún aviso posible** — el comentario del propio código dice "no
      hay a quién preguntarle". Se reintenta la llamada de finalizar hasta 5 veces con backoff
      (`_finalizarConBackoff`, líneas 319-332), pero no las respuestas individuales pendientes:

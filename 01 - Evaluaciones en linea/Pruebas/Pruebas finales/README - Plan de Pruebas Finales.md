@@ -1,7 +1,7 @@
 # Dashboard Maestro — Plan de Pruebas Finales (Evaluaciones en Línea)
 
 **Fecha:** 2026-09-21 · **Módulos:** `utn_movil_app` (Flutter) + `utn-movil-portafolio-estudiante` (NestJS)  
-**Entorno de validación:** teléfono Android 14 (Samsung Galaxy S24 FE) y backend local  
+**Entorno de validación:** dispositivo de prueba con Android 14 y backend local
 **Estado General:** 🟢 **100% Completado en Dispositivo (15/15 validados)** · 🟢 **100% Automatizado (91/91 pruebas pasadas)**
 
 ---
@@ -21,7 +21,7 @@ Todos estos casos fueron ejecutados en la app compilada en el teléfono físico 
 | [[FINAL-14 - Intento zombi con y sin intentos de sobra ✅\|FINAL-14]] | **Auto-cierre intento zombi** | [x] Coincide | *"Ahora si coincide los intentos."* (Zombi se auto-cierra; permite reanudar o bloquea según intentos disponibles). |
 | [[FINAL-15 - La retroalimentacion no se desbloquea adelantando el reloj ✅\|FINAL-15]] | **Seguridad clave de respuestas** | [x] Coincide | *"Se elevo el tiempo en retroalimentacion y funciono tal cual como el codigo. Ademas previo a que cierre salio sin respuestas."* |
 | [[FINAL-16 - Auto-finalizar en el limite exacto no debe dejarte sin salida ✅\|FINAL-16]] | **Resiliencia UI en auto-finalización** | [x] Coincide | Parte A validada. Parte B: al expirar con WiFi apagado, muestra overlay con "Reintentar" y "Volver" (sin spinner infinito). Al reactivar WiFi y reintentar, entrega con éxito. |
-|  | **Aislamiento anti-copia** | [x] Coincide | *"Se detecta la salida. se mandan las respuestas tal como deberia."* (Marca vieja de salida no auto-finaliza el intento nuevo). |
+|  | **Aislamiento de estado entre intentos** | [x] Coincide | El intento nuevo no hereda marcas del anterior. |
 | [[FINAL-18 - Intentos restantes no se refresca al volver del formulario ✅\|FINAL-18]] | **Refresco de estado al hacer Back** | [x] Coincide | Al finalizar intento y volver a la tarjeta de actividad con Back, el texto "Intentos restantes" se decrementa inmediatamente (3->2, 2->1, 1->0) sin recarga manual. |
 
 ---

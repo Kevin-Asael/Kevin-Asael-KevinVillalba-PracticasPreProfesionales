@@ -52,7 +52,7 @@ backend rompe en silencio (bind posicional, no por nombre — ver el invariante 
 
 ## Antes de correrlo — verificar
 
-- **Confirmar con el el ingeniero página de APEX 109 también pasa por procedimientos de `UTNDB` para
+- **Confirmar con el equipo responsable página de APEX 109 también pasa por procedimientos de `UTNDB` para
   escribir en esta tabla** (igual que hace con la calificación). No se verificó leyendo su código —
   sin acceso de edición a esa app ni a su metadata de páginas desde el MCP de solo lectura.
 - Revisar que `LMS_TRG_ACTIVIDADES_ALUMNOS` no se dispare por estas dos columnas nuevas — el trigger

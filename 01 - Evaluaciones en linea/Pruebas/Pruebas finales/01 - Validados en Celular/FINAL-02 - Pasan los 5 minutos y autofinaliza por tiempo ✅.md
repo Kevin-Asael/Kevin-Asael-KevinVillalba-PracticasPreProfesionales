@@ -43,7 +43,7 @@ Verifica que cuando el cronómetro llega naturalmente a cero (`00:00:00`), la ap
    el estudiante la marcó).
 3. El servidor ejecuta el procedimiento Oracle `LMS_PRC_CALIFICAR_EVALUACION` — protegido desde
    llamada coincide con otra finalización en curso para el mismo intento.
-4. Se limpia el marcador local de anti-copia (`EvaluacionSalidaLocalStorage`, no un buffer de
+4. Se limpia el marcador local del intento (`EvaluacionSalidaLocalStorage`, no un buffer de
    respuestas) para esa actividad.
 5. La app redirige a la ruta `/estudiante/evaluacion-online/resultado` y muestra un `AppSnackBar`
    de aviso ("El tiempo se ha agotado...").

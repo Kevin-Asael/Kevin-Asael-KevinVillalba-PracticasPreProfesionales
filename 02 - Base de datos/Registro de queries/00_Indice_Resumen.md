@@ -1226,11 +1226,11 @@ Confirmado end-to-end (cuenta <cuenta-de-prueba>/cedula <cedula>) via POST
 
 ## Correccion Q37 (2026-09-17): MVL_FUN_DETALLES_NOTAS_PARCIAL alineada con `main`
 
-Auditoria pedida por el usuario contra 2 commits de `main` sin mergear a `practicas-preprofesionales`
+Auditoría registrada contra 2 commits de `main` sin mergear a `practicas-preprofesionales`
 (`509a69f`/`cfe014b`, autor un compañero del equipo, 2026-09-10): reescribieron
 analiticas `SUM/COUNT OVER (PARTITION BY TIPO_EVAL_CODIGO)` en vez de subconsultas correlacionadas
 (motivo: ~10s de latencia por fila). Su commit dice "output identico a versiones anteriores", pero
-se encontro que **N3 redondea a 3 cifras en su version, cuando el original (y mi Q37 original)
+se encontro que **N3 redondea a 3 cifras en su version, cuando el original (y la consulta Q37 original)
 redondeaban N3 a 2** -- probablemente un copy-paste de N1 sin ajustar el literal. Confirmado con
 datos reales fuera de las cuentas estandar (curso 40756, cedula 1003XXXXXX, SUMA 30.7/4): original/mio
 daba 7.68, la version de un compañero del equipo da 7.675.
@@ -1254,7 +1254,7 @@ sin error en los 3 parciales.
 
 **Sigue en 39 objetos** (no es un objeto nuevo, es correccion de Q37 existente para alinearlo con
 `main`). Nota aparte: el `evaluacion_online.repository.ts` tambien difiere de `main`, pero ahi es al
-reves -- `practicas-preprofesionales` tiene un fix de idempotencia propio del usuario (commit
+reves -- `practicas-preprofesionales` tiene un fix de idempotencia del servicio (commit
 `26db164`, 2026-09-07) que `main` no tiene. Ese SI tiene prioridad sobre `main` (es un feat/fix, no
 una query) y no se toco -- `MVL_PRC_EVAL_TOGGLE_RESPUESTA_MULTIPLE` se queda con la logica idempotente
 ya migrada.

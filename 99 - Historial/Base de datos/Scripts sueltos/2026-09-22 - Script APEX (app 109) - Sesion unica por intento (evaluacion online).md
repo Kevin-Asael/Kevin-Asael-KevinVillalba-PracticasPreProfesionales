@@ -15,7 +15,7 @@ una dirección.
 
 **⚠ Supuesto sin verificar, condiciona todo lo de abajo:** que la página de APEX 109 ya escribe en
 `LMS_TAB_ACTIVIDADES_ALUMNOS` a través de procedimientos de `UTNDB` (igual que hace para calificar),
-no con DML directo desde la página. Confirmar con el el ingeniero dar esto por sentado.
+no con DML directo desde la página. Confirmar con el equipo responsable dar esto por sentado.
 
 ## Las tres piezas (página de "rendir evaluación", app 109)
 
@@ -70,7 +70,7 @@ Sólo funciona la dirección app→web: abrir en el celular saca a la web en su 
 
 ## Pendiente
 
-- Confirmar con el el ingeniero de arriba (procedimientos de `UTNDB` vs. DML directo).
+- Confirmar con el equipo responsable de arriba (procedimientos de `UTNDB` vs. DML directo).
 - Coordinar con el DBA que `UTNDB.LMS_PRC_EVAL_TOMAR_SESION` ya exista (script de Oracle) antes de
   que APEX intente llamarlo.
 - No probado en vivo: el log de acceso de APEX en la réplica de dev está congelado desde

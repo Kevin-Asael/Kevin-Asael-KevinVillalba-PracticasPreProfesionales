@@ -78,14 +78,14 @@ Plan de pruebas de referencia: `Obsidian Vault\07 - Documentacion\Resumen de ram
 ### Qué hay (en `src/semillas.ts`, parámetros nuevos `titulo`, `texto`, `ensayo` en `herramientas.ts`)
 - `abrir_evaluacion` (titulo): desde cualquier pantalla. Si la app no está al frente (launcher de Android) la relanza con monkey en vez de pulsar BACK. Si la tarjeta está en el calendario del día la toca directo; si no, «Buscar actividad» → resultado → calendario de ese día → baja la lista hasta la tarjeta (días con 14 actividades). Título **exacto** («MCP Dentro» ≠ «MCP Dentro manual»). Rechaza si no es MATERIA DE PRUEBA.
 - `iniciar_evaluacion`: «Evaluación» (barra inferior) → «Indicaciones» → desplaza → casilla «He leído y acepto» → espera «Comenzar» habilitado → toca. `ensayo:true` cancela sin gastar intento. Solo WEB → «Entendido» + falla. «No se han registrado preguntas» → «Regresar» + falla (no gasta intento).
-- `responder_evaluacion` (texto): recorre el formulario; EditText vacío → tocar + ACTION_SET_TEXT; opción → toca el primer botón sin texto con x<220 de cada tarjeta «Pregunta N» (asignación por bounds de la tarjeta); «Seleccione una opción...» → lista, una opción distinta por lista en la misma pregunta. Cierra teclado SOLO si está abierto (un BACK de más saca de la evaluación → anticopia). Fin = pantalla igual sin contar el cronómetro.
+- `responder_evaluacion` (texto): recorre el formulario; EditText vacío → tocar + ACTION_SET_TEXT; opción → toca el primer botón sin texto con x<220 de cada tarjeta «Pregunta N» (asignación por bounds de la tarjeta); «Seleccione una opción...» → lista, una opción distinta por lista en la misma pregunta. Cierra teclado SOLO si está abierto (un BACK de más saca de la evaluación). Fin = pantalla igual sin contar el cronómetro.
 - `finalizar_evaluacion`, `rendir_evaluacion` (todo junto, tiempo por fase).
 
 ### Resultados (<cuenta-de-prueba>)
 | Evaluación | Resultado |
 |---|---|
 | MCP Eval 3 intentos (627181) | solo WEB, la app la bloquea bien. No rendida. |
-| APP-B Anticopia salidas | 5 intentos gastados (1 a mano + 4 semilla), nota 3.3. 87,2 s → 8,5 → 5,3 → 6,5 s. Sin intentos. |
+| APP-B Control de evaluación | Se registraron pruebas del flujo existente; este resumen omite sus reglas internas. |
 | PLAT-MOVIL prueba | rendida 10,5 s, nota 3.3, quedan 2. |
 | MCP Dentro | 1.º intento: sin preguntas (no gastó). Tras cargarlas: rendida 6,2 s pero **«Respondió 0», nota 0.0** aunque la semilla marcó 1 opción. Quedan 2. |
 
@@ -160,7 +160,7 @@ Causas verificadas y arreglos (respaldo del agente previo: scratchpad sesión 92
 - Guion probado en emulator-5554 (MCP-E09): escribir(mantener_foco) → cortar → «no guardado» 1,9 s → sin «Error al guardar» → restaurar → «Guardado» y fila en Oracle.
 
 ## 2026-09-29 — emulador (1080x2424, hw.keyboard=yes)
-- Teclado: con teclado físico Gboard deja una ventana IME casi sin altura. El agente la contaba como «teclado abierto» → el BACK «para cerrarlo» sacaba de la búsqueda (y en la evaluación dispararía la anticopia). Arreglo: `v` en Agente.java exige alto > 300 px. jar nuevo = agente-5530.jar; respaldo del anterior en scratchpad sesión 7c785f16 `agente.jar.bak`.
+- Teclado: con teclado físico Gboard deja una ventana IME casi sin altura. El agente la contaba como «teclado abierto» → el BACK «para cerrarlo» sacaba de la búsqueda (y alteraba el flujo de evaluación). Arreglo: `v` en Agente.java exige alto > 300 px. jar nuevo = agente-5530.jar; respaldo del anterior en scratchpad sesión 7c785f16 `agente.jar.bak`.
 - Tras `pkill -f app_process` a veces la app Flutter deja de exponer accesibilidad («null root node», también con `uiautomator dump`). HOME/reabrir no basta: `am force-stop` + relanzar lo arregla.
 - `show_ime_with_hard_keyboard=1` no hizo aparecer el teclado en este AVD (quedó puesto).
 

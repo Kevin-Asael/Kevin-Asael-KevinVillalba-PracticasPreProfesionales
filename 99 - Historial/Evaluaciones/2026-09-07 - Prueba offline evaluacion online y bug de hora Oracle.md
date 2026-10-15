@@ -79,7 +79,7 @@ Se revisó el código para responder esto con certeza, paso a paso, tal como rea
    así que no es que desaparezcan sin decir nada — pero una vez que confirmas, no hay vuelta
    atrás.
 5. **Un caso aparte, más delicado:** cuando el examen se cierra solo porque se acabó el
-   tiempo (o porque el sistema anti-copia detectó que saliste de la app varias veces), **no
+   tiempo (o por otra vía de cierre automático), **no
    hay ningún aviso posible** — no hay a quién preguntarle, el examen se tiene que entregar
    sí o sí. Ahí también se borran las respuestas que no se alcanzaron a enviar, pero sin que
    nadie se entere en el momento.

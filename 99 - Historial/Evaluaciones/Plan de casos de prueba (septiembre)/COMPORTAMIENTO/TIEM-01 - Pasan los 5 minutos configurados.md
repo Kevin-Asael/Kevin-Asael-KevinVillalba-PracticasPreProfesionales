@@ -3,8 +3,7 @@
 **Fecha:** 2026-09-08 · **Tipo:** Cronómetro / Bug confirmado · **Severidad:** Crítica
 **Dónde:** app estudiante + backend `utn-movil-portafolio-estudiante` + Oracle
 
-Este es el caso que el el ingeniero textualmente: *«revisar si pongo 0 horas 5 minutos, hago
-pasar los 5 minutos, ¿me deja enviar las preguntas o cambiarlas aun así?»*.
+Comprueba que, al vencer el límite configurado, el servidor rechace nuevas respuestas y modificaciones.
 
 ## Precondiciones
 

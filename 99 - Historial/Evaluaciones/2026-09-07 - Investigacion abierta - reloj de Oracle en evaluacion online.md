@@ -111,7 +111,7 @@ esta cuenta hereda el mismo desfase.
    ```
    No hay arreglo de una sola vez a nivel de conexión — `SYSDATE` no obedece a `ALTER SESSION`
    ni a `TZ` del entorno, y la instancia es compartida por toda la plataforma (reiniciarla no
-   es decisión de un practicante).
+   corresponde al mantenimiento de este módulo).
 5. Decidir si esto se convierte en tarea de corrección real o se documenta como hallazgo
    conocido sin corregir por ahora, igual que ya está anotado el hallazgo de las 5 horas a
    nivel de plataforma.
@@ -152,7 +152,7 @@ Commits, verificados en git:
 - `e6dcc27` — `fix(evaluacion_online): valida visualizacion de retroalimentacion desde el servidor y no reloj local`
   La app ya no compara fechas localmente para decidir si muestra retroalimentación — le pregunta
   al servidor, eliminando el desfase visible para el estudiante en ese flujo concreto.
-- `864f16c` — `feat(evaluacion_online): reactiva modulo con anti-copia centralizado en backend y reloj monotonico`
+- `864f16c` — reactivación del módulo y ajustes de sincronización del cronómetro.
   El cronómetro visible usa un **reloj monótono** (`Stopwatch` de Dart), no `DateTime.now()`.
   Esto no arregla el desfase en Oracle, pero evita que ajustes de hora del dispositivo alteren
   el tiempo restante que ve el estudiante.
@@ -162,4 +162,4 @@ inflado) reduciendo el impacto visible. El síntoma #4 (cierre inesperado) y el 
 **siguen sin diagnosticar** — ver §5.
 
 Ver detalle completo de estos commits en:
-`DocOficial/2026-09-17 - Anti-copia y evaluacion online - implementacion y mejoras de estabilidad.md`
+[[Estabilidad de mecanismos existentes]]

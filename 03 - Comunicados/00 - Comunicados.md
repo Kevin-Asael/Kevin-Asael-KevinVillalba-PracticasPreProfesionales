@@ -2,7 +2,7 @@
 
 Servicio de comunicados de UTN Móvil: el micro `utn-movil-comunicados` (NestJS), la app `utn_movil_app` (módulo `comunicados`) y el hub web donde se publican. La documentación completa del servicio (requisitos, diseño y el registro de cambios de base con su estado por entorno) está en el propio repo: `utn-movil-comunicados/docs/`.
 
-## Mi parte
+## Cambios documentados
 
 ### Micro (`utn-movil-comunicados`, rama `practicas-preprofesionales`)
 

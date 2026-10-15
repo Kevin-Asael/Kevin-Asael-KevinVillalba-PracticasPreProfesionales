@@ -3,16 +3,12 @@
 **Fecha:** 2026-09-11 · **Tipo:** Cronómetro / Backend + Frontend · **Severidad:** Crítica
 **Dónde:** backend NestJS (`utn-movil-portafolio-estudiante`) + app Flutter (`utn_movil_app`)
 
-Verifica el bug real que reportaste hoy: un examen de 10:40 a 10:43, el cronómetro llegó a 0
-justo cuando venció el plazo general, el auto-finalizar fue rechazado por el servidor (403), y te
-quedaste en un loader "Tiempo agotado" sin ningún botón — obligándote a minimizar la app para
-escapar, lo cual el anti-copia contó como salida sospechosa.
+Documenta un fallo al coincidir el vencimiento del cronómetro y el plazo general: el servidor rechazaba la finalización y la pantalla permanecía cargando sin una acción de recuperación.
 
 ## Precondiciones
 
 - Una actividad configurada para que el cronómetro llegue a 0 **justo cuando** vence el plazo
-  general de la actividad (`fechaFin`) — igual que la de hoy (10:40-10:43), para reproducir el
-  caso exacto que falló.
+  general de la actividad (`fechaFin`) para reproducir la coincidencia de ambos límites.
 
 ## Pasos — parte A (caso real: el fix de fondo)
 
@@ -28,8 +24,7 @@ escapar, lo cual el anti-copia contó como salida sospechosa.
    instante, por ejemplo), observar la pantalla del overlay "Tiempo agotado".
 5. **Esperado:** ya NO debe quedarse girando para siempre. Debe cambiar a un ícono de error +
    botón **"Reintentar"** + botón **"Volver"** — sin necesidad de minimizar la app para escapar.
-6. Tocar "Volver": debe regresar a la pantalla anterior sin cerrar ni minimizar la app (para no
-   disparar el anti-copia).
+6. Tocar "Volver": debe regresar a la pantalla anterior sin cerrar ni minimizar la app (conservando el flujo de navegación).
 7. Tocar "Reintentar" (con la red ya restaurada): debe volver a intentar `finalizarEvaluacion` y,
    si tiene éxito, navegar a resultados igual que en la parte A.
 
@@ -50,11 +45,11 @@ escapar, lo cual el anti-copia contó como salida sospechosa.
 **Puntos clave a comprobar:**
 - [x] Parte A: finaliza sin error en el límite exacto.
 - [x] Parte B (si se logra provocar el fallo): aparecen los botones, no el spinner infinito.
-- [x] "Volver" no dispara ningún diálogo de anti-copia (porque no minimiza la app).
+- [x] "Volver" permite regresar a la pantalla anterior dentro del flujo de evaluación.
 
 ## Observación — qué pasó de verdad
 
-> Validado en Samsung Galaxy S24 FE: Se deshabilitó WiFi justo al expirar el temporizador (00:00:00). La UI reemplazó el loader por el overlay de error "No se pudo finalizar automáticamente la evaluación" junto con los botones "Reintentar" y "Volver", sin quedarse en spinner infinito. Al reactivar WiFi y pulsar "Reintentar", la entrega se completó exitosamente navegando a la pantalla de resultados con nota 2.0 y retroalimentación censurada.
+> Validado en dispositivo Android de prueba: Se deshabilitó WiFi justo al expirar el temporizador (00:00:00). La UI reemplazó el loader por el overlay de error "No se pudo finalizar automáticamente la evaluación" junto con los botones "Reintentar" y "Volver", sin quedarse en spinner infinito. Al reactivar WiFi y pulsar "Reintentar", la entrega se completó exitosamente navegando a la pantalla de resultados con nota 2.0 y retroalimentación censurada.
 
 ## Estado
 

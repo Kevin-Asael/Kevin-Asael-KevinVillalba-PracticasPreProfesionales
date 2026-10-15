@@ -3,9 +3,7 @@
 **Fecha:** 2026-09-08 · **Tipo:** Creación / Validación · **Severidad:** Crítica
 **Dónde:** Portafolio Docente (`utn-movil-portafolio-docentes`) → app Flutter, lado estudiante
 
-Este es el caso literal que el el ingeniero: *«revisar si pongo 0 horas 5 minutos... y si pongo 0
-horas 0 minutos»*. Este cubre el extremo de 0+0; el de 5 minutos concretos está en
-[[TIEM-01 - Pasan los 5 minutos configurados]] (lote siguiente).
+Comprueba la configuración de una evaluación con duración cero. El caso de cinco minutos está en [[TIEM-01 - Pasan los 5 minutos configurados]].
 
 ## Precondiciones
 

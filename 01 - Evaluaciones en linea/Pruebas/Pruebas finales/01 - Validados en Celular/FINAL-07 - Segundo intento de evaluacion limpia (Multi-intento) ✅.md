@@ -3,7 +3,7 @@
 **Fecha:** 2026-09-10 · **Tipo:** Multi-intento / Reanudación · **Severidad:** Alta
 **Dónde:** backend NestJS (`utn-movil-portafolio-estudiante`) + app Flutter
 
-Verifica que cuando una evaluación permite múltiples intentos (por ejemplo, 2 intentos), una vez finalizado el Intento 1, el estudiante pueda iniciar el Intento 2 y este arranque con el cronómetro completamente fresco (5 minutos completos), sin heredar la fecha de inicio del intento anterior ni bloqueos de anti-copia.
+Verifica que cuando una evaluación permite múltiples intentos (por ejemplo, 2 intentos), una vez finalizado el Intento 1, el estudiante pueda iniciar el Intento 2 y este arranque con el cronómetro completamente fresco (5 minutos completos), sin heredar la fecha de inicio del intento anterior ni estados pendientes del intento anterior.
 
 ## Precondiciones
 
@@ -32,7 +32,7 @@ Verifica que cuando una evaluación permite múltiples intentos (por ejemplo, 2 
          CALIFICACION = NULL
      WHERE ID_ACTIVIDAD_ALUMNO = :2
      ```
-   - Limpia el estado de anti-copia del intento anterior (`antiCopiaService.limpiar(idActividadAlumno)`).
+   - Limpia el estado del intento anterior (`antiCopiaService.limpiar(idActividadAlumno)`).
    - Como `FECHA_INICIO_EA` quedó en NULL, el nuevo llamado a `iniciarCronometro` establece un nuevo `SYSDATE`.
 2. En Flutter:
    - El cronómetro arranca nuevamente desde **00:05:00**.

@@ -59,7 +59,7 @@ teléfono, que era exactamente el hueco que se cerró hoy.
 
 ## Observación — qué pasó de verdad
 
->Se elevo el tiempo en retroalimentacion y funciono tal cual como el codigo. Ademas cuando se estaba en el tiempo anterior a que cierre la evaluacion me salio bien sin las respuestas previo a que cierre.
+> Se comprobó que la retroalimentación permanecía restringida antes del cierre configurado.
 
 ## Estado
 
